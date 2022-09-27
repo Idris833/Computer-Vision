@@ -17,11 +17,10 @@ def load(image_path):
         out: numpy array of shape(image_height, image_width, 3).
     """
     out = None
-
-    ### YOUR CODE HERE
+    
     # Use skimage io.imread
     out = io.imread(image_path)
-    ### END YOUR CODE
+  
     # Let's convert the image to be between the correct range.
     out = out.astype(np.float64) / 255
     return out
@@ -42,10 +41,8 @@ def dim_image(image):
     """
 
     out = None
-
-    ### YOUR CODE HERE
     out = 0.5*image**2
-    ### END YOUR CODE
+    
     return out
 
 
@@ -63,9 +60,7 @@ def convert_to_grey_scale(image):
     """
     out = None
 
-    ### YOUR CODE HERE
     out = color.rgb2gray(image)
-    ### END YOUR CODE
 
     return out
 
@@ -83,7 +78,6 @@ def rgb_exclusion(image, channel):
 
     out = None
 
-    ### YOUR CODE HERE
     out = image.copy() 
     ### remove the red which corresponds to 0 from the image
     if(channel == "R"):
@@ -94,7 +88,6 @@ def rgb_exclusion(image, channel):
     ### remove the blue from the image which corresponds to 2
     elif(channel =="B"):
         out[:,:,2] = 0
-    ### END YOUR CODE
     return out
 
 def lab_decomposition(image, channel):
@@ -131,7 +124,6 @@ def hsv_decomposition(image, channel='H'):
     hsv = color.rgb2hsv(image)
     out = None
     
-    ### YOUR CODE HERE
     out = hsv.copy()
     ### By default we have RGB decomposition, we convert it to the HSV decomposition
     ### Set up S and V to 0 and remain with H
@@ -146,7 +138,6 @@ def hsv_decomposition(image, channel='H'):
     elif (channel == "V"):
         out[:,:,0] = 0
         out[:,:,1] = 0
-    ### END YOUR CODE
 
     return out
 
