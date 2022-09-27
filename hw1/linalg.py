@@ -16,9 +16,7 @@ def dot_product(a, b):
     """
 
     out = None
-    ### YOUR CODE HERE
     out = np.dot(a,b)
-    ### END YOUR CODE
     return out
 
 
@@ -37,12 +35,10 @@ def complicated_matrix_function(M, a, b):
         out: numpy matrix of shape (x, 1).
     """
     out = None
-    ### YOUR CODE HERE
     first = dot_product(a,b)
     second = dot_product(M, a.T)
     out = np.dot(second,first)
     ### since the dot product is commutative
-    ### END YOUR CODE
 
     return out
 
@@ -64,9 +60,7 @@ def svd(M):
     u = None
     s = None
     v = None
-    ### YOUR CODE HERE
     u,s,v = np.linalg.svd(M)
-    ### END YOUR CODE
     return u, s, v
 
 
@@ -84,14 +78,12 @@ def get_singular_values(M, k):
         singular_values: array of shape (k)
     """
     singular_values = None
-    ### YOUR CODE HERE
     singular_values =[]
     M = np.array([[1,2,3],[4,5,6],[7,8,9],[10,11,12]])
     s = np.linalg.svd(M, compute_uv=False)
     ### compute_uv false to just get the S matrix which has the singular values
     for i in range (0,k) :
         singular_values.append(s[i])
-    ### END YOUR CODE
     return singular_values
 
 
@@ -109,9 +101,7 @@ def eigen_decomp(M):
     """
     w = None
     v = None
-    ### YOUR CODE HERE
     w, v = np.linalg.eig(M)
-    ### END YOUR CODE
     return w, v
 
 
@@ -134,12 +124,10 @@ def get_eigen_values_and_vectors(M, k):
     """
     eigenvalues = []
     eigenvectors = []
-    ### YOUR CODE HERE
     w,v = eigen_decomp(M)
     v = v.T
     indexes = w.argsort()[::-1]  
     for i in range(0,k):
         eigenvalues.append(w[indexes[i]])
         eigenvectors.append(v[indexes[i]])      
-    ### END YOUR CODE
     return eigenvalues, eigenvectors
