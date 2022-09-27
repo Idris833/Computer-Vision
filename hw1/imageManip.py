@@ -160,9 +160,14 @@ def mix_images(image1, image2, channel1, channel2):
     """
 
     out = None
-    ### YOUR CODE HERE
-    pass
-    ### END YOUR CODE
+    left=image1.copy()
+    right=image2.copy()
+    out=[]
+    
+    left=rgb_exclusion(image1, channel1)
+    right=rgb_exclusion(image2, channel2)
+
+    out=np.concatenate((left[:,0:150,:],right[:,150:,:]), axis=1)
 
     return out
 
