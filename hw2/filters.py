@@ -188,7 +188,19 @@ def normalized_cross_correlation(f, g):
 
     out = None
     ### YOUR CODE HERE
-    
+    g = np.delete(g,0,axis=0)
+    Hi, Wi = f.shape
+    Hk, Wk = g.shape
+    x = Hk//2
+    y = Wk//2
+    out = np.copy(f)
+    temp = zero_pad(f, x, y)
+    g = 1/np.std(g) * (g - np.mean(g))
+    for i in range(x, Hi + x):
+        for j in range(y, Wi + y):
+            sum1 = temp[i-x:i+x+1,j-y:j+y+1]
+            sum1 = 1/np.std(sum1) * (sum1 - np.mean(sum1))
+            out[i-x,j-y] = (sum1 * g).sum()
     ### END YOUR CODE
 
     return out
